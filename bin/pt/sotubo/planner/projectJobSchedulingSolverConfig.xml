@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
+	<solutionClass>pt.sotubo.planner.domain.Schedule</solutionClass>
+	<entityClass>pt.sotubo.planner.domain.Operation</entityClass>
+ 	<daemon>true</daemon>
+
+	<scoreDirectorFactory>
+		<scoreDefinitionType>BENDABLE</scoreDefinitionType>
+		<bendableHardLevelsSize>2</bendableHardLevelsSize>
+		<bendableSoftLevelsSize>3</bendableSoftLevelsSize>
+		<incrementalScoreCalculatorClass>pt.sotubo.planner.solver.OperationIncrementalScoreCalculator</incrementalScoreCalculatorClass>
+	</scoreDirectorFactory>
+	<termination>
+		<secondsSpentLimit>60</secondsSpentLimit>
+	</termination>
+
+	<constructionHeuristic>
+		<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+	</constructionHeuristic>
+	<localSearch>
+
+		<unionMoveSelector>
+
+			<changeMoveSelector> 
+				<valueSelector> 
+					<variableName>resource</variableName> 
+				</valueSelector>
+				<selectedCountLimit>50</selectedCountLimit> 
+			</changeMoveSelector> 
+
+			<changeMoveSelector>
+				<valueSelector>
+					<variableName>startDate</variableName>
+				</valueSelector>
+				<selectedCountLimit>100</selectedCountLimit>
+			</changeMoveSelector>
+
+
+		</unionMoveSelector>
+		<acceptor>
+			<entityTabuRatio>0.2</entityTabuRatio>
+			<lateAcceptanceSize>500</lateAcceptanceSize>
+		</acceptor>
+		<forager>
+			<acceptedCountLimit>4</acceptedCountLimit>
+		</forager>
+	</localSearch>
+	
+	
+
+</solver>

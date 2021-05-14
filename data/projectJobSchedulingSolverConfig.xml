@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+	<!-- NON_REPRODUCIBLE FULL_ASSERT  -->
+	<environmentMode>NON_REPRODUCIBLE</environmentMode>
+	<solutionClass>pt.sotubo.planner.domain.Schedule</solutionClass>
+	<entityClass>pt.sotubo.planner.domain.Operation</entityClass>
+  	<entityClass>pt.sotubo.planner.domain.Resource</entityClass>
+	<entityClass>pt.sotubo.planner.domain.WorkOrder</entityClass>
+ 	
+	
+ 	<daemon>true</daemon>
+
+	<scoreDirectorFactory>
+ 		<incrementalScoreCalculatorClass>pt.sotubo.planner.solver.OperationIncrementalScoreCalculator</incrementalScoreCalculatorClass>
+<!-- 		<easyScoreCalculatorClass>pt.sotubo.planner.solver.OperationEasyScoreCalculator</easyScoreCalculatorClass> -->
+	</scoreDirectorFactory>
+	
+	
+	<termination>
+		<unimprovedHoursSpentLimit>360</unimprovedHoursSpentLimit>
+	</termination>
+
+<!-- 	<exhaustiveSearch> -->
+<!-- 		<exhaustiveSearchType>BRANCH_AND_BOUND</exhaustiveSearchType> -->
+<!-- 		<nodeExplorationType>DEPTH_FIRST</nodeExplorationType> -->
+<!-- 	</exhaustiveSearch> -->
+<!--  <partitionedSearch> -->
+<!--  	<solutionPartitionerClass>pt.sotubo.planner.solver.ScheduleSolutionPartitioner</solutionPartitionerClass> -->
+ 
+	<constructionHeuristic>
+		<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+		
+	</constructionHeuristic>
+	
+	<customPhase>
+    	<customPhaseCommandClass>pt.sotubo.planner.solver.ScheduleSolutionInitializer</customPhaseCommandClass>
+		<forceUpdateBestSolution>true</forceUpdateBestSolution>
+		<customProperties>
+			<delayOnRequirementsChange>60</delayOnRequirementsChange>
+			<maxIterations>30</maxIterations>
+		</customProperties>
+	</customPhase>
+
+
+
+	<localSearch>
+		
+		<unionMoveSelector>
+  
+  
+  
+	<moveIteratorFactory>
+		<fixedProbabilityWeight>3.0</fixedProbabilityWeight>
+		<moveIteratorFactoryClass>pt.sotubo.planner.solver.CustomChangeMoveFactory</moveIteratorFactoryClass>
+		
+    </moveIteratorFactory>
+    
+<!-- 	<moveListFactory> -->
+<!--       <moveListFactoryClass>pt.sotubo.planner.solver.CustomChangeMoveListFactory</moveListFactoryClass> -->
+<!--       <selectedCountLimit>10</selectedCountLimit> -->
+<!--     </moveListFactory> -->
+    
+    
+			<changeMoveSelector> 
+				<fixedProbabilityWeight>1.0</fixedProbabilityWeight>
+				<valueSelector> 
+					<variableName>resource</variableName> 
+				</valueSelector>
+				<selectedCountLimit>1</selectedCountLimit> 
+			</changeMoveSelector> 
+			
+			<changeMoveSelector>
+				<fixedProbabilityWeight>2.0</fixedProbabilityWeight>
+				<valueSelector>
+					<variableName>startDate</variableName>
+				</valueSelector>
+<!-- 				<selectedCountLimit>5</selectedCountLimit> -->
+			</changeMoveSelector>
+			
+<!--  			<changeMoveSelector> -->
+<!--  				<filterClass>pt.sotubo.planner.solver.filter.LastOperationChangeMoveFilter</filterClass> -->
+<!-- 				<valueSelector> -->
+<!-- 					<variableName>startDate</variableName> -->
+<!-- 				</valueSelector> -->
+<!-- 			</changeMoveSelector> -->
+ 			
+ 			
+<!-- 			<changeMoveSelector> -->
+<!-- 				<filterClass>pt.sotubo.planner.solver.filter.MatchRequirementsChangeMoveFilter</filterClass> -->
+<!-- 				<valueSelector> -->
+<!-- 					<variableName>startDate</variableName> -->
+<!-- 				</valueSelector> -->
+<!-- 			</changeMoveSelector> -->
+ 			
+ 		
+<!-- 			<changeMoveSelector> -->
+<!-- 				<cacheType>STEP</cacheType> -->
+<!-- 				<selectionOrder>PROBABILISTIC</selectionOrder> -->
+<!-- 				<probabilityWeightFactoryClass>pt.sotubo.planner.solver.ChangeProbabilityWeightFactoryClass</probabilityWeightFactoryClass>  -->
+<!-- 				<valueSelector> -->
+<!-- 					<variableName>startDate</variableName> -->
+<!-- 				</valueSelector> -->
+<!-- 				<selectedCountLimit>50</selectedCountLimit> -->
+<!-- 			</changeMoveSelector> -->
+			
+			
+			<swapMoveSelector>
+				<fixedProbabilityWeight>1.0</fixedProbabilityWeight>
+ 				<filterClass>pt.sotubo.planner.solver.filter.OperationSwapMoveFilter</filterClass>
+				<entitySelector>
+					<entityClass>pt.sotubo.planner.domain.Operation</entityClass>
+				</entitySelector>
+				<variableNameInclude>startDate</variableNameInclude>
+  				<selectedCountLimit>1</selectedCountLimit>
+			</swapMoveSelector>
+
+		</unionMoveSelector>
+		<acceptor>
+<!-- 			<acceptorType>HILL_CLIMBING</acceptorType> -->
+<!--    			<stepCountingHillClimbingSize>100</stepCountingHillClimbingSize> -->
+    			<lateAcceptanceSize>1000</lateAcceptanceSize>
+	  			<entityTabuRatio>0.03</entityTabuRatio>
+<!--  			<valueTabuRatio>0.10</valueTabuRatio> -->
+<!--  				<moveTabuSize>20</moveTabuSize> -->
+				
+<!--           		<simulatedAnnealingStartingTemperature>10000000000/10000000000/10000000000/10000000000/10000000000/10000000000/10000000000/10000000000/10000000000</simulatedAnnealingStartingTemperature> -->
+ 			<simulatedAnnealingStartingTemperature>[100/100000/1000]hard/[1000/1000/1000/1000/1000/1000]soft</simulatedAnnealingStartingTemperature>
+		</acceptor>
+		<forager>
+<!-- 			 <pickEarlyType>FIRST_BEST_SCORE_IMPROVING</pickEarlyType> -->
+ 			<acceptedCountLimit>10</acceptedCountLimit>
+<!--  			<finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType> -->
+		</forager>
+	</localSearch>
+<!--  </partitionedSearch>	 -->
+
+</solver>

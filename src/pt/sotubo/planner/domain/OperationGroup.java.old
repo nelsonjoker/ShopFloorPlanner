@@ -1,0 +1,202 @@
+package pt.sotubo.planner.domain;
+
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.valuerange.CountableValueRange;
+import org.optaplanner.core.api.domain.valuerange.ValueRangeFactory;
+import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
+
+import pt.sotubo.planner.solver.ResourceUsageStrengthWeightFactory;
+import pt.sotubo.planner.solver.StartDateStrengthComparator;
+
+
+@PlanningEntity()
+public class OperationGroup extends AbstractList<Operation>{
+
+	private List<Operation> mOperations;
+	private Long mStart;
+	private Long mEnd;
+	private List<Resource> mResourceList;
+	
+	@PlanningVariable(valueRangeProviderRefs = {"startDateRange"}, strengthComparatorClass = StartDateStrengthComparator.class)
+	public Long getStartDate() {
+		return mStart;
+	}
+
+	public void setStartDate(Long start) {
+		mStart = start;
+		updateOperation();
+	}
+
+	public Long getEnd() {
+		return mEnd;
+	}
+
+	@PlanningVariable(valueRangeProviderRefs = {"resourceRange"}, strengthWeightFactoryClass = ResourceUsageStrengthWeightFactory.class)
+	public Resource getResource() { return mOperations.size() > 0 ? mOperations.get(0).getResource(): null; }
+	public void setResource(Resource resource) { 
+		for(Operation op : mOperations)
+			op.setResource(resource);
+	}
+	
+
+	public OperationGroup(){
+		mOperations = new ArrayList<Operation>();
+		mResourceList = new ArrayList<Resource>();
+		mStart = null;
+		mEnd = null;
+	}
+	
+	public OperationGroup(OperationGroup copy){
+		mOperations = new ArrayList<Operation>(copy.mOperations);
+		mResourceList = new ArrayList<Resource>(copy.mResourceList);
+		mStart = copy.mStart;
+		mEnd = copy.mEnd;
+	}
+
+	private void updateTimes(){
+		if(mOperations.size() > 0){
+			mStart = mOperations.get(0).getStartDate();
+			mEnd = mOperations.get(mOperations.size()-1).getEndDate();
+		}else{
+			mStart = null;
+			mEnd = null;
+		}
+	}
+	
+	private void updateOperation(){
+		
+		long start = mStart;
+		Iterator<Operation> it = iterator();
+		Operation op = null;
+		while(it.hasNext()){
+			op = it.next();
+			op.setStartDate(start);
+			start += op.getDuration();
+		}
+		
+	}
+	
+
+	@Override
+	public Operation get(int index) {
+		return mOperations.get(index);
+	}
+
+
+	@Override
+	public int size() {
+		return mOperations.size();
+	}
+	
+
+	@Override
+	public void add(int index, Operation element) {
+		for(index = 0; index < mOperations.size(); index++){
+    		if(mOperations.get(index).getStartDate() > element.getStartDate()){
+    			break;
+    		}
+    	}
+		mOperations.add(index, element);
+		updateTimes();
+	}
+	
+    @Override
+    public Operation remove(int index) {
+    	Operation res = mOperations.remove(index);
+    	updateTimes();
+    	return res;
+    }
+    
+    @Override
+    public Iterator<Operation> iterator() {
+    	return mOperations.iterator();
+    }
+    
+    
+    public boolean isValid(Operation operation){
+    	
+    	if(mOperations.size() == 0)
+    		return true;
+    	
+    	Long dueDate = null;
+    	WorkOrder exwo = null;
+    	for(Operation op : mOperations){
+    		exwo = op.getWorkOrder();
+			for(ExecutionGroup g : exwo.getExecutionGroups()){
+				String code = g.getCode();
+        		if(code.startsWith("INV_") && g.getEndTime() != null){
+        			dueDate = g.getEndTime();
+        			break;
+        		}
+			}
+			if(dueDate != null)
+				break;
+    	}
+    	WorkOrder targetwo = null;
+    	if(dueDate != null){
+    		targetwo = operation.getWorkOrder();
+			for(ExecutionGroup g : targetwo.getExecutionGroups()){
+				String code = g.getCode();
+        		if(code.startsWith("INV_") && g.getEndTime() != null){
+        			if(dueDate != g.getEndTime())
+        				return false;
+        		}
+			}
+    	}
+    	
+    	List<StockItem> test = new ArrayList<StockItem>();
+    	for(StockItemTransaction tr : exwo.getRequiredTransaction()){
+    		if(!test.contains(tr))
+    			test.add(tr.getItem());
+    	}
+    	for(StockItemTransaction tr : targetwo.getRequiredTransaction()){
+   			test.remove(tr.getItem());
+    	}
+    	if(test.size() != 0)
+    		return false;
+    	
+    	for(StockItemTransaction tr : exwo.getProducedTransactionList()){
+    		if(!test.contains(tr))
+    			test.add(tr.getItem());
+    	}
+    	for(StockItemTransaction tr : targetwo.getProducedTransactionList()){
+   			test.remove(tr.getItem());
+    	}
+    	if(test.size() != 0)
+    		return false;
+    	
+    	
+    	if(!mResourceList.contains(operation.getResource()))
+    		return false;
+    	
+    	/*
+    	List<Resource> res = new ArrayList<Resource>(mOperations.get(0).getResourceRange());
+    	res.removeAll(operation.getResourceRange());
+    	
+    	if(res.size() != 0)
+    		return false;
+    	*/
+    	
+    	return true;
+    }
+    
+    
+    @ValueRangeProvider(id = "startDateRange")
+    public CountableValueRange<Long> getStartDateRange() {
+    	long now = mStart;
+        return ValueRangeFactory.createLongValueRange(now - 15*24*3600, now + 15*24*3600);
+    	
+	}
+    
+
+    @ValueRangeProvider(id = "resourceRange")
+	public List<Resource> getResourceRange() { return mResourceList; }
+	public void setResourceRange(List<Resource> rs) { mResourceList = rs; }
+
+}
