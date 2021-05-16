@@ -8,7 +8,6 @@
   <packaging>jar</packaging>
 
   <name>planner</name>
-  <url>http://sotubo.pt</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

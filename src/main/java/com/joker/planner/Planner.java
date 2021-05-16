@@ -48,7 +48,6 @@ import com.rethinkdb.net.Cursor;
 
 public class Planner<T extends BaseSolver> implements Runnable{
 
-	//public static final String SOLVER_CONFIG = "pt/sotubo/planner/projectJobSchedulingSolverConfig.xml";
 	public static final String SOLVER_CONFIG = "projectJobSchedulingSolverConfig.xml";
 	 /**
      * offset from current time for planning window
@@ -2351,8 +2350,7 @@ public class Planner<T extends BaseSolver> implements Runnable{
 	public static void main(String[] args) throws InterruptedException{
 		
 		
-		DbRethinkMap.setParameters("sig.sotubo.pt", 28015, "sotubo",  "");
-		//DbRethinkMap.setParameters("192.168.10.240", 28015, "planner",  "");
+		DbRethinkMap.setParameters("192.168.10.240", 28015, "planner",  "");
 		
 		
 		Planner<NoSolver> p = new Planner<NoSolver>();
