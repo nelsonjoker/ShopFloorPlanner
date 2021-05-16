@@ -1,4 +1,4 @@
-package pt.sotubo.planner.domain;
+package com.joker.planner.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,14 +11,14 @@ import java.util.Set;
 import org.optaplanner.core.api.score.Score;
 import org.optaplanner.core.api.score.buildin.bendable.BendableScore;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
-import pt.sotubo.planner.domain.ExecutionGroup;
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.Resource;
-import pt.sotubo.planner.domain.Schedule;
-import pt.sotubo.planner.domain.StockItem;
-import pt.sotubo.planner.domain.StockItemProductionTransaction;
-import pt.sotubo.planner.domain.StockItemTransaction;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.domain.ExecutionGroup;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.Resource;
+import com.joker.planner.domain.Schedule;
+import com.joker.planner.domain.StockItem;
+import com.joker.planner.domain.StockItemProductionTransaction;
+import com.joker.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.WorkOrder;
 
 /**
  * couldn't get the incremental calculator to work so implemented an easy one

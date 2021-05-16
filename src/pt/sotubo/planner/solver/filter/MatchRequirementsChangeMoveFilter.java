@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver.filter;
+package com.joker.planner.solver.filter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import org.optaplanner.core.impl.heuristic.selector.common.decorator.SelectionFi
 import org.optaplanner.core.impl.heuristic.selector.move.generic.ChangeMove;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.Schedule;
-import pt.sotubo.planner.domain.StockItem;
-import pt.sotubo.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.Schedule;
+import com.joker.planner.domain.StockItem;
+import com.joker.planner.domain.StockItemTransaction;
 
 public class MatchRequirementsChangeMoveFilter extends LastOperationChangeMoveFilter{
 

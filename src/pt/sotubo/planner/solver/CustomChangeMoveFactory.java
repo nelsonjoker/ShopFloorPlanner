@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,14 +27,14 @@ import org.optaplanner.core.impl.heuristic.selector.move.factory.MoveIteratorFac
 import org.optaplanner.core.impl.heuristic.selector.move.generic.ChangeMove;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 
-import pt.sotubo.planner.SortedArrayList;
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.Resource;
-import pt.sotubo.planner.domain.Schedule;
-import pt.sotubo.planner.domain.StockItem;
-import pt.sotubo.planner.domain.StockItemProductionTransaction;
-import pt.sotubo.planner.domain.StockItemTransaction;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.SortedArrayList;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.Resource;
+import com.joker.planner.domain.Schedule;
+import com.joker.planner.domain.StockItem;
+import com.joker.planner.domain.StockItemProductionTransaction;
+import com.joker.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.WorkOrder;
 
 public class CustomChangeMoveFactory implements MoveIteratorFactory {
 

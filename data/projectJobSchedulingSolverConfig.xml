@@ -2,17 +2,17 @@
 <solver>
 	<!-- NON_REPRODUCIBLE FULL_ASSERT  -->
 	<environmentMode>NON_REPRODUCIBLE</environmentMode>
-	<solutionClass>pt.sotubo.planner.domain.Schedule</solutionClass>
-	<entityClass>pt.sotubo.planner.domain.Operation</entityClass>
-  	<entityClass>pt.sotubo.planner.domain.Resource</entityClass>
-	<entityClass>pt.sotubo.planner.domain.WorkOrder</entityClass>
+	<solutionClass>com.joker.planner.domain.Schedule</solutionClass>
+	<entityClass>com.joker.planner.domain.Operation</entityClass>
+  	<entityClass>com.joker.planner.domain.Resource</entityClass>
+	<entityClass>com.joker.planner.domain.WorkOrder</entityClass>
  	
 	
  	<daemon>true</daemon>
 
 	<scoreDirectorFactory>
- 		<incrementalScoreCalculatorClass>pt.sotubo.planner.solver.OperationIncrementalScoreCalculator</incrementalScoreCalculatorClass>
-<!-- 		<easyScoreCalculatorClass>pt.sotubo.planner.solver.OperationEasyScoreCalculator</easyScoreCalculatorClass> -->
+ 		<incrementalScoreCalculatorClass>com.joker.planner.solver.OperationIncrementalScoreCalculator</incrementalScoreCalculatorClass>
+<!-- 		<easyScoreCalculatorClass>com.joker.planner.solver.OperationEasyScoreCalculator</easyScoreCalculatorClass> -->
 	</scoreDirectorFactory>
 	
 	
@@ -25,7 +25,7 @@
 <!-- 		<nodeExplorationType>DEPTH_FIRST</nodeExplorationType> -->
 <!-- 	</exhaustiveSearch> -->
 <!--  <partitionedSearch> -->
-<!--  	<solutionPartitionerClass>pt.sotubo.planner.solver.ScheduleSolutionPartitioner</solutionPartitionerClass> -->
+<!--  	<solutionPartitionerClass>com.joker.planner.solver.ScheduleSolutionPartitioner</solutionPartitionerClass> -->
  
 	<constructionHeuristic>
 		<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
@@ -33,7 +33,7 @@
 	</constructionHeuristic>
 	
 	<customPhase>
-    	<customPhaseCommandClass>pt.sotubo.planner.solver.ScheduleSolutionInitializer</customPhaseCommandClass>
+    	<customPhaseCommandClass>com.joker.planner.solver.ScheduleSolutionInitializer</customPhaseCommandClass>
 		<forceUpdateBestSolution>true</forceUpdateBestSolution>
 		<customProperties>
 			<delayOnRequirementsChange>60</delayOnRequirementsChange>
@@ -51,12 +51,12 @@
   
 	<moveIteratorFactory>
 		<fixedProbabilityWeight>3.0</fixedProbabilityWeight>
-		<moveIteratorFactoryClass>pt.sotubo.planner.solver.CustomChangeMoveFactory</moveIteratorFactoryClass>
+		<moveIteratorFactoryClass>com.joker.planner.solver.CustomChangeMoveFactory</moveIteratorFactoryClass>
 		
     </moveIteratorFactory>
     
 <!-- 	<moveListFactory> -->
-<!--       <moveListFactoryClass>pt.sotubo.planner.solver.CustomChangeMoveListFactory</moveListFactoryClass> -->
+<!--       <moveListFactoryClass>com.joker.planner.solver.CustomChangeMoveListFactory</moveListFactoryClass> -->
 <!--       <selectedCountLimit>10</selectedCountLimit> -->
 <!--     </moveListFactory> -->
     
@@ -78,7 +78,7 @@
 			</changeMoveSelector>
 			
 <!--  			<changeMoveSelector> -->
-<!--  				<filterClass>pt.sotubo.planner.solver.filter.LastOperationChangeMoveFilter</filterClass> -->
+<!--  				<filterClass>com.joker.planner.solver.filter.LastOperationChangeMoveFilter</filterClass> -->
 <!-- 				<valueSelector> -->
 <!-- 					<variableName>startDate</variableName> -->
 <!-- 				</valueSelector> -->
@@ -86,7 +86,7 @@
  			
  			
 <!-- 			<changeMoveSelector> -->
-<!-- 				<filterClass>pt.sotubo.planner.solver.filter.MatchRequirementsChangeMoveFilter</filterClass> -->
+<!-- 				<filterClass>com.joker.planner.solver.filter.MatchRequirementsChangeMoveFilter</filterClass> -->
 <!-- 				<valueSelector> -->
 <!-- 					<variableName>startDate</variableName> -->
 <!-- 				</valueSelector> -->
@@ -96,7 +96,7 @@
 <!-- 			<changeMoveSelector> -->
 <!-- 				<cacheType>STEP</cacheType> -->
 <!-- 				<selectionOrder>PROBABILISTIC</selectionOrder> -->
-<!-- 				<probabilityWeightFactoryClass>pt.sotubo.planner.solver.ChangeProbabilityWeightFactoryClass</probabilityWeightFactoryClass>  -->
+<!-- 				<probabilityWeightFactoryClass>com.joker.planner.solver.ChangeProbabilityWeightFactoryClass</probabilityWeightFactoryClass>  -->
 <!-- 				<valueSelector> -->
 <!-- 					<variableName>startDate</variableName> -->
 <!-- 				</valueSelector> -->
@@ -106,9 +106,9 @@
 			
 			<swapMoveSelector>
 				<fixedProbabilityWeight>1.0</fixedProbabilityWeight>
- 				<filterClass>pt.sotubo.planner.solver.filter.OperationSwapMoveFilter</filterClass>
+ 				<filterClass>com.joker.planner.solver.filter.OperationSwapMoveFilter</filterClass>
 				<entitySelector>
-					<entityClass>pt.sotubo.planner.domain.Operation</entityClass>
+					<entityClass>com.joker.planner.domain.Operation</entityClass>
 				</entitySelector>
 				<variableNameInclude>startDate</variableNameInclude>
   				<selectedCountLimit>1</selectedCountLimit>

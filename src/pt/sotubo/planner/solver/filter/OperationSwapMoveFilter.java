@@ -1,10 +1,10 @@
-package pt.sotubo.planner.solver.filter;
+package com.joker.planner.solver.filter;
 
 import org.optaplanner.core.impl.heuristic.selector.common.decorator.SelectionFilter;
 import org.optaplanner.core.impl.heuristic.selector.move.generic.SwapMove;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 
-import pt.sotubo.planner.domain.Operation;
+import com.joker.planner.domain.Operation;
 
 public class OperationSwapMoveFilter implements SelectionFilter<SwapMove>{
 

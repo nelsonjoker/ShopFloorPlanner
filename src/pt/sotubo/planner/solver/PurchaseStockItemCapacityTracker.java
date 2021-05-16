@@ -1,7 +1,7 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
-import pt.sotubo.planner.domain.StockItemTransaction;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.WorkOrder;
 
 public class PurchaseStockItemCapacityTracker implements IStockItemCapacityTracker{
 

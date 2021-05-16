@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,9 +6,9 @@ import java.util.Map;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.optaplanner.core.impl.heuristic.selector.common.decorator.SelectionSorterWeightFactory;
 
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.Resource;
-import pt.sotubo.planner.domain.Schedule;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.Resource;
+import com.joker.planner.domain.Schedule;
 
 
 public class ResourceUsageStrengthWeightFactory implements SelectionSorterWeightFactory<Schedule, Resource> {

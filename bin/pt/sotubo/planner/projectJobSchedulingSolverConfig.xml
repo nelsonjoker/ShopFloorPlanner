@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solver>
 	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
-	<solutionClass>pt.sotubo.planner.domain.Schedule</solutionClass>
-	<entityClass>pt.sotubo.planner.domain.Operation</entityClass>
+	<solutionClass>com.joker.planner.domain.Schedule</solutionClass>
+	<entityClass>com.joker.planner.domain.Operation</entityClass>
  	<daemon>true</daemon>
 
 	<scoreDirectorFactory>
 		<scoreDefinitionType>BENDABLE</scoreDefinitionType>
 		<bendableHardLevelsSize>2</bendableHardLevelsSize>
 		<bendableSoftLevelsSize>3</bendableSoftLevelsSize>
-		<incrementalScoreCalculatorClass>pt.sotubo.planner.solver.OperationIncrementalScoreCalculator</incrementalScoreCalculatorClass>
+		<incrementalScoreCalculatorClass>com.joker.planner.solver.OperationIncrementalScoreCalculator</incrementalScoreCalculatorClass>
 	</scoreDirectorFactory>
 	<termination>
 		<secondsSpentLimit>60</secondsSpentLimit>

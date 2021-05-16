@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,8 +26,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
 
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.Resource;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.Resource;
 
 
 public class RenewableResourceCapacityTracker extends ResourceCapacityTracker {

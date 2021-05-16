@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.io.Serializable;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import org.optaplanner.core.impl.domain.valuerange.buildin.primlong.LongValueRan
 import org.optaplanner.core.impl.domain.valuerange.util.ValueRangeIterator;
 import org.optaplanner.core.impl.solver.random.RandomUtils;
 
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.WorkOrder;
 
 
 /**

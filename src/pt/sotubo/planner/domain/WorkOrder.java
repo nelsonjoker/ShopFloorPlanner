@@ -1,4 +1,4 @@
-package pt.sotubo.planner.domain;
+package com.joker.planner.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.CustomShadowVariable;
 
-import pt.sotubo.planner.solver.OperationDateUpdatingVariableListener;
+import com.joker.planner.solver.OperationDateUpdatingVariableListener;
 
 @PlanningEntity()
 public class WorkOrder implements Serializable{

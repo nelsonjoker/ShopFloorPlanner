@@ -1,4 +1,4 @@
-package pt.sotubo.planner;
+package com.joker.planner;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,15 +25,15 @@ import org.optaplanner.core.api.score.Score;
 import org.optaplanner.core.api.score.buildin.bendablelong.BendableLongScore;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.Resource;
-import pt.sotubo.planner.domain.Schedule;
-import pt.sotubo.planner.domain.StockItem;
-import pt.sotubo.planner.domain.StockItemProductionTransaction;
-import pt.sotubo.planner.domain.StockItemTransaction;
-import pt.sotubo.planner.domain.WorkOrder;
-import pt.sotubo.planner.solver.OperationIncrementalScoreCalculator;
-import pt.sotubo.planner.solver.ScheduleSolutionInitializer;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.Resource;
+import com.joker.planner.domain.Schedule;
+import com.joker.planner.domain.StockItem;
+import com.joker.planner.domain.StockItemProductionTransaction;
+import com.joker.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.WorkOrder;
+import com.joker.planner.solver.OperationIncrementalScoreCalculator;
+import com.joker.planner.solver.ScheduleSolutionInitializer;
 
 public class NaiveSolver {
 

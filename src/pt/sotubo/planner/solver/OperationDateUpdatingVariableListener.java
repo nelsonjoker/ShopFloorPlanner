@@ -1,11 +1,11 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.List;
 import org.optaplanner.core.impl.domain.variable.listener.VariableListener;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.WorkOrder;
 
 /**
  * Keep the workorder start and end time in sync

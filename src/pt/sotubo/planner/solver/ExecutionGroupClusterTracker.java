@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,10 +12,10 @@ import java.util.TreeMap;
 
 import org.optaplanner.core.api.score.Score;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
-import pt.sotubo.planner.domain.ExecutionGroup;
-import pt.sotubo.planner.domain.StockItem;
-import pt.sotubo.planner.domain.StockItemTransaction;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.domain.ExecutionGroup;
+import com.joker.planner.domain.StockItem;
+import com.joker.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.WorkOrder;
 
 /**
  * Measures the similarity between adjacent allocations

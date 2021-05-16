@@ -1,4 +1,4 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,16 +17,16 @@ import org.optaplanner.core.impl.score.director.incremental.AbstractIncrementalS
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import pt.sotubo.planner.SortedArrayList;
-import pt.sotubo.planner.SortedList;
-import pt.sotubo.planner.domain.ExecutionGroup;
-import pt.sotubo.planner.domain.Operation;
-import pt.sotubo.planner.domain.Resource;
-import pt.sotubo.planner.domain.Schedule;
-import pt.sotubo.planner.domain.StockItem;
-import pt.sotubo.planner.domain.StockItemProductionTransaction;
-import pt.sotubo.planner.domain.StockItemTransaction;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.SortedArrayList;
+import com.joker.planner.SortedList;
+import com.joker.planner.domain.ExecutionGroup;
+import com.joker.planner.domain.Operation;
+import com.joker.planner.domain.Resource;
+import com.joker.planner.domain.Schedule;
+import com.joker.planner.domain.StockItem;
+import com.joker.planner.domain.StockItemProductionTransaction;
+import com.joker.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.WorkOrder;
 
 
 public class OperationIncrementalScoreCalculator extends AbstractIncrementalScoreCalculator<Schedule>{

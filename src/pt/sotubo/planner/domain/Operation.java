@@ -1,4 +1,4 @@
-package pt.sotubo.planner.domain;
+package com.joker.planner.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,10 +15,10 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeFactory;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
-import pt.sotubo.planner.solver.ResourceUsageStrengthWeightFactory;
-import pt.sotubo.planner.solver.OperationStartDateValueRange;
-import pt.sotubo.planner.solver.StartDateStrengthComparator;
-import pt.sotubo.planner.solver.filter.MovableOperationFilter;
+import com.joker.planner.solver.ResourceUsageStrengthWeightFactory;
+import com.joker.planner.solver.OperationStartDateValueRange;
+import com.joker.planner.solver.StartDateStrengthComparator;
+import com.joker.planner.solver.filter.MovableOperationFilter;
 
 @PlanningEntity(movableEntitySelectionFilter = MovableOperationFilter.class)
 public class Operation implements Serializable{

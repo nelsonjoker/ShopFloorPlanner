@@ -1,12 +1,12 @@
-package pt.sotubo.planner.solver;
+package com.joker.planner.solver;
 
 import java.util.Collection;
 import java.util.TreeMap;
 
-import pt.sotubo.planner.domain.StockItem;
-import pt.sotubo.planner.domain.StockItemProductionTransaction;
-import pt.sotubo.planner.domain.StockItemTransaction;
-import pt.sotubo.planner.domain.WorkOrder;
+import com.joker.planner.domain.StockItem;
+import com.joker.planner.domain.StockItemProductionTransaction;
+import com.joker.planner.domain.StockItemTransaction;
+import com.joker.planner.domain.WorkOrder;
 
 public class StockItemCapacityTracker implements IStockItemCapacityTracker {
 
@@ -29,7 +29,7 @@ public class StockItemCapacityTracker implements IStockItemCapacityTracker {
     }
 
     /* (non-Javadoc)
-	 * @see pt.sotubo.planner.solver.IStockItemCapacityTracker#insertRequirement(pt.sotubo.planner.domain.StockItemTransaction, pt.sotubo.planner.domain.WorkOrder)
+	 * @see com.joker.planner.solver.IStockItemCapacityTracker#insertRequirement(com.joker.planner.domain.StockItemTransaction, com.joker.planner.domain.WorkOrder)
 	 */
     @Override
 	public void insertRequirement(StockItemTransaction resourceRequirement, WorkOrder wo) {
@@ -77,7 +77,7 @@ public class StockItemCapacityTracker implements IStockItemCapacityTracker {
     }
     
     /* (non-Javadoc)
-	 * @see pt.sotubo.planner.solver.IStockItemCapacityTracker#insertProduction(pt.sotubo.planner.domain.StockItemTransaction, pt.sotubo.planner.domain.WorkOrder)
+	 * @see com.joker.planner.solver.IStockItemCapacityTracker#insertProduction(com.joker.planner.domain.StockItemTransaction, com.joker.planner.domain.WorkOrder)
 	 */
     @Override
 	public void insertProduction(StockItemTransaction resourceProduction, WorkOrder wo) {
@@ -114,7 +114,7 @@ public class StockItemCapacityTracker implements IStockItemCapacityTracker {
     }
 
     /* (non-Javadoc)
-	 * @see pt.sotubo.planner.solver.IStockItemCapacityTracker#retractRequirement(pt.sotubo.planner.domain.StockItemTransaction, pt.sotubo.planner.domain.WorkOrder)
+	 * @see com.joker.planner.solver.IStockItemCapacityTracker#retractRequirement(com.joker.planner.domain.StockItemTransaction, com.joker.planner.domain.WorkOrder)
 	 */
     @Override
 	public void retractRequirement(StockItemTransaction resourceRequirement, WorkOrder wo) {
@@ -150,7 +150,7 @@ public class StockItemCapacityTracker implements IStockItemCapacityTracker {
     }
     
     /* (non-Javadoc)
-	 * @see pt.sotubo.planner.solver.IStockItemCapacityTracker#retractProduction(pt.sotubo.planner.domain.StockItemTransaction, pt.sotubo.planner.domain.WorkOrder)
+	 * @see com.joker.planner.solver.IStockItemCapacityTracker#retractProduction(com.joker.planner.domain.StockItemTransaction, com.joker.planner.domain.WorkOrder)
 	 */
     @Override
 	public void retractProduction(StockItemTransaction resourceProduction, WorkOrder wo) {
@@ -184,7 +184,7 @@ public class StockItemCapacityTracker implements IStockItemCapacityTracker {
     }
 
     /* (non-Javadoc)
-	 * @see pt.sotubo.planner.solver.IStockItemCapacityTracker#getHardScore()
+	 * @see com.joker.planner.solver.IStockItemCapacityTracker#getHardScore()
 	 */
     @Override
 	public int getHardScore() {

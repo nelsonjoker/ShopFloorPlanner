@@ -1,4 +1,4 @@
-package pt.sotubo.planner;
+package com.joker.planner;
 
 import java.util.Collection;
 
